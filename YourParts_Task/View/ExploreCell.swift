@@ -9,7 +9,9 @@
 import UIKit
 
 class ExploreCell: UITableViewCell {
-
+    
+    @IBOutlet weak var deviceNameLbl: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,6 +21,11 @@ class ExploreCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    
+    func setDeviceName(for name: String?) {
+        self.deviceNameLbl?.text = name
     }
 
 }
