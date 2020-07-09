@@ -1,2 +1,3 @@
 ${PODS_ROOT}/Target Support Files/Pods-YourParts_Task/Pods-YourParts_Task-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/Keys/Keys.framework

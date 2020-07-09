@@ -8,15 +8,18 @@
 
 import Foundation
 import Alamofire
+import Keys
 
 typealias SuccessBlock<T: Decodable> = (T?) -> Void
 typealias FailureBlock = (Error?) -> Void
+
+private let podKeys = YourParts_TaskKeys()
+
 class APIService {
-    // 9acb264f67cc593b1c31f6e4ab7a86cb623e12237663a854
-    
+
     func getResponse<T: Decodable>(url: String , success: @escaping SuccessBlock<T> , failed: @escaping FailureBlock) {
         
-        let apiToken = "9acb264f67cc593b1c31f6e4ab7a86cb623e12237663a854"
+        let apiToken = podKeys.fono_API_Token
         let parameters = [
             "token": apiToken
         ]

@@ -11,3 +11,10 @@ target 'YourParts_Task' do
   
 
 end
+
+
+plugin 'cocoapods-keys', {
+:project => "YourParts_Task",
+:keys => [
+  "Fono_API_Token"
+]}

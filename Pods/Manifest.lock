@@ -1,16 +1,23 @@
 PODS:
   - Alamofire (5.0.2)
+  - Keys (1.0.1)
 
 DEPENDENCIES:
   - Alamofire
+  - Keys (from `Pods/CocoaPodsKeys`)
 
 SPEC REPOS:
   trunk:
     - Alamofire
 
+EXTERNAL SOURCES:
+  Keys:
+    :path: Pods/CocoaPodsKeys
+
 SPEC CHECKSUMS:
   Alamofire: 3ba7a4db18b4f62c4a1c0e1cb39d7f3d52e10ada
+  Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
 
-PODFILE CHECKSUM: 9c19f3293c5771bb8fdc857672193aa879912509
+PODFILE CHECKSUM: 7356154fe14168fef667ef4dc1b84d9590fe1703
 
 COCOAPODS: 1.9.1
