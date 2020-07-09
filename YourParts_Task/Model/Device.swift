@@ -8,7 +8,8 @@
 
 import Foundation
 
-class Device: Codable {
+struct Device: Codable {
+    // There area a lot of attributes from API , but for simplicity i choose 12 attr only
     var deviceName: String?
     var brand: String?
     var technology: String?
@@ -38,7 +39,38 @@ class Device: Codable {
         case cardSlot   = "card_slot"
     }
    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: DeviceKeys.self)
+        deviceName = try values.decode(String.self, forKey: .deviceName)
+        // Optional try because there is not all link array contains contains all properties
+        // Check out the link
+        brand      = try? values.decode(String.self, forKey: .brand)
+        technology = try? values.decode(String.self, forKey: .technology)
+        released   = try? values.decode(String.self, forKey: .released)
+        dimensions = try? values.decode(String.self, forKey: .dimensions)
+        weight     = try? values.decode(String.self, forKey: .weight)
+        type       = try? values.decode(String.self, forKey: .type)
+        size       = try? values.decode(String.self, forKey: .size)
+        resolution = try? values.decode(String.self, forKey: .resolution)
+        battery    = try? values.decode(String.self, forKey: .battery)
+        cpu        = try? values.decode(String.self, forKey: .cpu)
+        cardSlot   = try? values.decode(String.self, forKey: .cardSlot)
+    }
     
+    init() {
+        deviceName = ""
+        brand      = ""
+        technology = ""
+        released   = ""
+        dimensions = ""
+        weight     = ""
+        type       = ""
+        size       = ""
+        resolution = ""
+        battery    = ""
+        cpu        = ""
+        cardSlot   = ""
+    }
     
 /*
      "DeviceName": "Samsung Galaxy A70s",
