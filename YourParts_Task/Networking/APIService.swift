@@ -16,12 +16,14 @@ typealias FailureBlock = (Error?) -> Void
 private let podKeys = YourParts_TaskKeys()
 
 class APIService {
+    static let shared = APIService()
 
     func getResponse<T: Decodable>(url: String , success: @escaping SuccessBlock<T> , failed: @escaping FailureBlock) {
         
         let apiToken = podKeys.fono_API_Token
         let parameters = [
-            "token": apiToken
+            "token": apiToken,
+            "brand": "Samsung"
         ]
         
         AF.request(url, method: .get, parameters: parameters, headers: nil)
