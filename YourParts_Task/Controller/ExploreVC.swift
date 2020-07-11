@@ -13,7 +13,8 @@ class ExploreVC: UIViewController {
     @IBOutlet weak var exploreTable: UITableView!
     @IBOutlet weak var loadMoreBtn: UIButton!
     
-    var samsungPhones: [Device] = [] , tableDataSource: [Device] = []
+    static var samsungPhones: [Device] = []
+    private var tableDataSource: [Device] = []
     // Paging 0 -- it means load first 10 devices , +1 load the next 10 items
     var pageIndex = 1 , isLoading = false
     
@@ -40,9 +41,9 @@ class ExploreVC: UIViewController {
                         
                 // Back to main thread
                 DispatchQueue.main.async {
-                    self.samsungPhones = samsungDevices!
+                    ExploreVC.samsungPhones = samsungDevices!
                     // Append only 10 items
-                    self.tableDataSource.append(contentsOf: self.samsungPhones[0..<10])
+                    self.tableDataSource.append(contentsOf: ExploreVC.samsungPhones[0..<10])
                     self.exploreTable.reloadData()
                 }
                 
@@ -56,7 +57,7 @@ class ExploreVC: UIViewController {
     
     func loadMore() {
         guard !isLoading else { return }
-        guard self.pageIndex * 10 < self.samsungPhones.count else {
+        guard self.pageIndex * 10 < ExploreVC.samsungPhones.count else {
             print("Loaded all devices successfully")
             return
         }
@@ -64,9 +65,9 @@ class ExploreVC: UIViewController {
         // Loading is Not a good indicator because there is no a network delay that takes time get more by pagination or something
         isLoading = true
         var from = self.pageIndex * 10 , to = (self.pageIndex * 10) + 10
-        if to >= self.samsungPhones.count { to = self.samsungPhones.count }
+        if to >= ExploreVC.samsungPhones.count { to = ExploreVC.samsungPhones.count }
         
-        self.tableDataSource.append(contentsOf: self.samsungPhones[from ..< to])
+        self.tableDataSource.append(contentsOf: ExploreVC.samsungPhones[from ..< to])
         self.exploreTable.reloadData()
         
         self.pageIndex += 1
