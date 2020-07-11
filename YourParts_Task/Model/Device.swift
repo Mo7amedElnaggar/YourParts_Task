@@ -72,6 +72,24 @@ struct Device: Codable {
         cardSlot   = ""
     }
     
+    func getDeviceAtrributes() -> [(attr: String , val: String?)] {
+        return [
+            (attr: "Device Name" , val: deviceName),
+            (attr: "Brand" , val: brand),
+            (attr: "Technology" , val: technology),
+            (attr: "Status" , val: released),
+            (attr: "Dimensions" , val: dimensions),
+            (attr: "Weight" , val: weight),
+            (attr: "Type" , val: type),
+            (attr: "Size" , val: size),
+            (attr: "Resolution" , val: resolution),
+            (attr: "Battery" , val: battery),
+            (attr: "CPU" , val: cpu),
+            (attr: "Card Slot" , val: cardSlot),
+
+        ]
+    }
+    
 /*
      "DeviceName": "Samsung Galaxy A70s",
      "Brand": "Samsung",
