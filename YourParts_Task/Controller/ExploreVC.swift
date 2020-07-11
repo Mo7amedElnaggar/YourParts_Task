@@ -105,7 +105,10 @@ extension ExploreVC: UITableViewDataSource , UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // To be handled when adding new Screen with the selected Phone details (10 attributes of selected phone)
+        if let deviceSpecsVC = self.storyboard?.instantiateViewController(withIdentifier: "DeviceSpecsVC") as? DeviceSpecsVC {
+            deviceSpecsVC.device = tableDataSource[indexPath.row]
+            self.navigationController?.pushViewController(deviceSpecsVC, animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
